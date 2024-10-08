@@ -2,7 +2,7 @@
 
 const nextConfig = {
   basePath: '/portfolio',
-  // assetPrefix: '/portfolio/'
+  assetPrefix: '/portfolio/',
   images: {
     unoptimized: true,
   },
