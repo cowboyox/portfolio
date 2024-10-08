@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   output: 'export',
-  // basePath: '/smartguardox.github.io',
+  basePath: '/portfolio',
 };
 
 export default nextConfig;
