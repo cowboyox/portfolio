@@ -1,9 +1,10 @@
 import Image from 'next/image';
-import { FiClock, FiTag } from 'react-icons/fi';
+import { FiClock, FiTag, FiGlobe, FiGithub, FiMapPin } from 'react-icons/fi';
 
 import PagesMetaHead from '@/components/PagesMetaHead';
 // import RelatedProjects from '@/components/projects/RelatedProjects';
 import { projectsData } from '@/data/projectsData';
+import Link from 'next/link';
 
 function ProjectSingle({ params }) {
   const { id } = params;
@@ -17,19 +18,31 @@ function ProjectSingle({ params }) {
       {/* Header */}
       <div>
         <p className='font-general-medium mb-7 mt-14 text-left text-3xl font-bold text-primary-dark dark:text-primary-light sm:mt-20 sm:text-4xl'>
-          {project.ProjectHeader.title}
+          {project.title}
         </p>
         <div className='flex'>
           <div className='mr-10 flex items-center'>
             <FiClock className='text-xl text-ternary-dark dark:text-ternary-light' />
             <span className='font-general-regular ml-2 leading-none text-primary-dark dark:text-primary-light'>
-              {project.ProjectHeader.publishDate}
+              {project.duration}
+            </span>
+          </div>
+          <div className='mr-10 flex items-center'>
+            <FiMapPin className='h-4 w-4 text-ternary-dark dark:text-ternary-light' />
+            <span className='font-general-regular ml-2 leading-none text-primary-dark dark:text-primary-light'>
+              {project.location}
+            </span>
+          </div>
+          <div className='mr-10 flex items-center'>
+            <FiGlobe className='h-4 w-4 text-ternary-dark dark:text-ternary-light' />
+            <span className='font-general-regular ml-2 leading-none text-primary-dark dark:text-primary-light'>
+              Remote
             </span>
           </div>
           <div className='flex items-center'>
             <FiTag className='h-4 w-4 text-ternary-dark dark:text-ternary-light' />
             <span className='font-general-regular ml-2 leading-none text-primary-dark dark:text-primary-light'>
-              {project.ProjectHeader.tags}
+              {project.tags}
             </span>
           </div>
         </div>
@@ -37,7 +50,7 @@ function ProjectSingle({ params }) {
 
       {/* Gallery */}
       <div className='mt-12 grid grid-cols-1 sm:grid-cols-3 sm:gap-10'>
-        {project.ProjectImages.map((project) => {
+        {project.images.map((project) => {
           return (
             <div className='mb-10 sm:mb-0' key={project.id}>
               <Image
@@ -55,10 +68,10 @@ function ProjectSingle({ params }) {
       </div>
 
       {/* Info */}
-      <div className='mt-14 block gap-0 sm:flex sm:gap-10'>
-        <div className='w-full text-left sm:w-1/3'>
+      <div className='mt-14 block gap-0 sm:gap-10'>
+        <div className='w-full text-left'>
           {/* Single project client details */}
-          <div className='mb-7'>
+          {/* <div className='mb-7'>
             <p className='font-general-regular mb-2 text-2xl font-semibold text-secondary-dark dark:text-secondary-light'>
               {project.ProjectInfo.ClientHeading}
             </p>
@@ -85,25 +98,38 @@ function ProjectSingle({ params }) {
                 );
               })}
             </ul>
+          </div> */}
+          <div className='mb-7'>
+            <p className='font-general-regular mb-2 text-2xl font-semibold text-secondary-dark dark:text-secondary-light'>
+              Repository
+            </p>
+            <Link href={project.repoUrl} target='_blank'>
+              <div className='flex items-center'>
+                <FiGithub className='h-4 w-4 text-ternary-dark dark:text-ternary-light' />
+                <span className='font-general-regular ml-2 leading-none text-primary-dark dark:text-primary-light'>
+                  {project.repoUrl}
+                </span>
+              </div>
+            </Link>
           </div>
 
           {/* Single project objectives */}
-          <div className='mb-7'>
+          {/* <div className='mb-7'>
             <p className='font-general-regular mb-2 text-2xl font-semibold text-ternary-dark dark:text-ternary-light'>
               {project.ProjectInfo.ObjectivesHeading}
             </p>
             <p className='font-general-regular text-primary-dark dark:text-ternary-light'>
               {project.ProjectInfo.ObjectivesDetails}
             </p>
-          </div>
+          </div> */}
 
           {/* Single project technologies */}
           <div className='mb-7'>
             <p className='font-general-regular mb-2 text-2xl font-semibold text-ternary-dark dark:text-ternary-light'>
-              {project.ProjectInfo.Technologies[0].title}
+              {project.tech[0].title}
             </p>
             <p className='font-general-regular text-primary-dark dark:text-ternary-light'>
-              {project.ProjectInfo.Technologies[0].techs.join(', ')}
+              {project.tech[0].techs.join(', ')}
             </p>
           </div>
 
@@ -134,17 +160,17 @@ function ProjectSingle({ params }) {
         </div>
 
         {/*  Single project right section details */}
-        <div className='mt-10 w-full text-left sm:mt-0 sm:w-2/3'>
+        <div className='mt-10 w-full text-left sm:mt-0'>
           <p className='mb-7 text-2xl font-bold text-primary-dark dark:text-primary-light'>
-            {project.ProjectInfo.ProjectDetailsHeading}
+            Description
           </p>
-          {project.ProjectInfo.ProjectDetails.map((details) => {
+          {project.description.map((desc) => {
             return (
               <p
-                key={details.id}
+                key={desc.id}
                 className='font-general-regular mb-5 text-lg text-ternary-dark dark:text-ternary-light'
               >
-                {details.details}
+                {desc.details}
               </p>
             );
           })}

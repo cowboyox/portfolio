@@ -29,8 +29,8 @@ const ProjectSingle = (props) => {
             <p className='font-general-medium mb-2 text-xl text-ternary-dark dark:text-ternary-light md:text-2xl'>
               {props.title}
             </p>
-            <span className='text-lg text-ternary-dark dark:text-ternary-light'>
-              {props.category}
+            <span className='text-md text-ternary-dark dark:text-ternary-light'>
+              {props.shortTags}
             </span>
           </div>
         </div>

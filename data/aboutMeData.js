@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 export const aboutMeData = [
   {
     id: uuidv4(),
-    bio: 'Full Stack Developer with a solid background of 9 years in Web2 & Web3 development. Skilled in creating intuitive and responsive user-friendly interfaces. Proficient in modern web technologies and frameworks with a focus on usability, accessibility and performance. Experienced in integrating frontend applications with blockchain networks and smart contracts. Highly professional blockchain developer with comprehensive accomplishments applying high-security smart contracts to ensure success and achieve goals.',
+    bio: 'Web2 & Web3 Engineer with a solid background of 9 years. Skilled in creating intuitive and responsive user-friendly interfaces. Proficient in modern web technologies and frameworks with a focus on usability, accessibility and performance. Experienced in integrating frontend applications with blockchain networks and smart contracts. Highly professional blockchain developer with comprehensive accomplishments applying high-security smart contracts to ensure success and achieve goals.',
   },
   {
     id: uuidv4(),
