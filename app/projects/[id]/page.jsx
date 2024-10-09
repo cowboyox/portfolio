@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import { FiClock, FiTag, FiGlobe, FiGithub, FiMapPin } from 'react-icons/fi';
+import Link from 'next/link';
+import { FiClock, FiGithub, FiGlobe, FiMapPin, FiTag } from 'react-icons/fi';
 
 import PagesMetaHead from '@/components/PagesMetaHead';
 // import RelatedProjects from '@/components/projects/RelatedProjects';
 import { projectsData } from '@/data/projectsData';
-import Link from 'next/link';
 
 function ProjectSingle({ params }) {
   const { id } = params;
