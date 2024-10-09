@@ -1,11 +1,15 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import dynamic from 'next/dynamic';
 
 // import AboutClients from '@/components/about/AboutClients';
 // import AboutCounter from '@/components/about/AboutCounter';
-import AboutMeBio from '@/components/about/AboutMeBio';
 import PagesMetaHead from '@/components/PagesMetaHead';
+
+const AboutMeBio = dynamic(() => import('@/components/about/AboutMeBio'), {
+  ssr: false,
+});
 
 function about() {
   return (

@@ -2,30 +2,34 @@ import Image from 'next/image';
 import { FiClock, FiTag } from 'react-icons/fi';
 
 import PagesMetaHead from '@/components/PagesMetaHead';
-import RelatedProjects from '@/components/projects/RelatedProjects';
+// import RelatedProjects from '@/components/projects/RelatedProjects';
 import { projectsData } from '@/data/projectsData';
 
-function ProjectSingle(props) {
-  return (
+function ProjectSingle({ params }) {
+  const { id } = params;
+
+  const project = projectsData.find((project) => project.id === parseInt(id));
+
+  return project ? (
     <div className='container mx-auto'>
-      <PagesMetaHead title={props.project.title} />
+      <PagesMetaHead title={project.title} />
 
       {/* Header */}
       <div>
         <p className='font-general-medium mb-7 mt-14 text-left text-3xl font-bold text-primary-dark dark:text-primary-light sm:mt-20 sm:text-4xl'>
-          {props.project.ProjectHeader.title}
+          {project.ProjectHeader.title}
         </p>
         <div className='flex'>
           <div className='mr-10 flex items-center'>
             <FiClock className='text-xl text-ternary-dark dark:text-ternary-light' />
             <span className='font-general-regular ml-2 leading-none text-primary-dark dark:text-primary-light'>
-              {props.project.ProjectHeader.publishDate}
+              {project.ProjectHeader.publishDate}
             </span>
           </div>
           <div className='flex items-center'>
             <FiTag className='h-4 w-4 text-ternary-dark dark:text-ternary-light' />
             <span className='font-general-regular ml-2 leading-none text-primary-dark dark:text-primary-light'>
-              {props.project.ProjectHeader.tags}
+              {project.ProjectHeader.tags}
             </span>
           </div>
         </div>
@@ -33,7 +37,7 @@ function ProjectSingle(props) {
 
       {/* Gallery */}
       <div className='mt-12 grid grid-cols-1 sm:grid-cols-3 sm:gap-10'>
-        {props.project.ProjectImages.map((project) => {
+        {project.ProjectImages.map((project) => {
           return (
             <div className='mb-10 sm:mb-0' key={project.id}>
               <Image
@@ -56,10 +60,10 @@ function ProjectSingle(props) {
           {/* Single project client details */}
           <div className='mb-7'>
             <p className='font-general-regular mb-2 text-2xl font-semibold text-secondary-dark dark:text-secondary-light'>
-              {props.project.ProjectInfo.ClientHeading}
+              {project.ProjectInfo.ClientHeading}
             </p>
             <ul className='leading-loose'>
-              {props.project.ProjectInfo.CompanyInfo.map((info) => {
+              {project.ProjectInfo.CompanyInfo.map((info) => {
                 return (
                   <li
                     className='font-general-regular text-ternary-dark dark:text-ternary-light'
@@ -86,30 +90,30 @@ function ProjectSingle(props) {
           {/* Single project objectives */}
           <div className='mb-7'>
             <p className='font-general-regular mb-2 text-2xl font-semibold text-ternary-dark dark:text-ternary-light'>
-              {props.project.ProjectInfo.ObjectivesHeading}
+              {project.ProjectInfo.ObjectivesHeading}
             </p>
             <p className='font-general-regular text-primary-dark dark:text-ternary-light'>
-              {props.project.ProjectInfo.ObjectivesDetails}
+              {project.ProjectInfo.ObjectivesDetails}
             </p>
           </div>
 
           {/* Single project technologies */}
           <div className='mb-7'>
             <p className='font-general-regular mb-2 text-2xl font-semibold text-ternary-dark dark:text-ternary-light'>
-              {props.project.ProjectInfo.Technologies[0].title}
+              {project.ProjectInfo.Technologies[0].title}
             </p>
             <p className='font-general-regular text-primary-dark dark:text-ternary-light'>
-              {props.project.ProjectInfo.Technologies[0].techs.join(', ')}
+              {project.ProjectInfo.Technologies[0].techs.join(', ')}
             </p>
           </div>
 
           {/* Single project social sharing */}
-          <div>
+          {/* <div>
             <p className='font-general-regular mb-2 text-2xl font-semibold text-ternary-dark dark:text-ternary-light'>
-              {props.project.ProjectInfo.SocialSharingHeading}
+              {project.ProjectInfo.SocialSharingHeading}
             </p>
-            {/* <div className="flex items-center gap-3 mt-5">
-							{props.project.ProjectInfo.SocialSharing.map(
+            <div className="flex items-center gap-3 mt-5">
+							{project.ProjectInfo.SocialSharing.map(
 								(social, index) => {
 									<Link
 										key={index}
@@ -125,16 +129,16 @@ function ProjectSingle(props) {
 									</Link>;
 								}
 							)}
-						</div> */}
-          </div>
+						</div>
+          </div> */}
         </div>
 
         {/*  Single project right section details */}
         <div className='mt-10 w-full text-left sm:mt-0 sm:w-2/3'>
           <p className='mb-7 text-2xl font-bold text-primary-dark dark:text-primary-light'>
-            {props.project.ProjectInfo.ProjectDetailsHeading}
+            {project.ProjectInfo.ProjectDetailsHeading}
           </p>
-          {props.project.ProjectInfo.ProjectDetails.map((details) => {
+          {project.ProjectInfo.ProjectDetails.map((details) => {
             return (
               <p
                 key={details.id}
@@ -147,18 +151,17 @@ function ProjectSingle(props) {
         </div>
       </div>
 
-      <RelatedProjects />
+      {/* <RelatedProjects /> */}
     </div>
+  ) : (
+    <div />
   );
 }
 
-export async function getServerSideProps({ query }) {
-  const { id } = query;
-  return {
-    props: {
-      project: projectsData.filter((project) => project.id === parseInt(id))[0],
-    },
-  };
+export async function generateStaticParams() {
+  return projectsData.map((project) => ({
+    id: project.id.toString(), // Ensure id is a string
+  }));
 }
 
 export default ProjectSingle;

@@ -1,19 +1,21 @@
+'use client';
+
 import Image from 'next/image';
 
+import { usePortfolioContext } from '@/context/index';
 import { aboutMeData } from '@/data/aboutMeData';
-import useThemeSwitcher from '@/hooks/useThemeSwitcher';
 import logoDark from '@/public/images/logo-dark.png';
 import logoLight from '@/public/images/logo-light.png';
 
 function AboutMeBio() {
-  const [activeTheme] = useThemeSwitcher();
+  const { activeTheme } = usePortfolioContext();
 
   return (
     <div className='mt-10 block sm:mt-20 sm:flex sm:gap-10'>
       <div className='mb-7 w-full sm:mb-0 sm:w-1/4'>
         {activeTheme === 'dark' ? (
           <Image
-            src={logoLight}
+            src={logoDark}
             className='cursor-pointer'
             alt='Dark Logo'
             width={300}
@@ -21,7 +23,7 @@ function AboutMeBio() {
           />
         ) : (
           <Image
-            src={logoDark}
+            src={logoLight}
             className='cursor-pointer'
             alt='Dark Logo'
             width={300}

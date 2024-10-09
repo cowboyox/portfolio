@@ -4,10 +4,10 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { FiArrowDownCircle } from 'react-icons/fi';
 
-import useThemeSwitcher from '@/hooks/useThemeSwitcher';
+import { usePortfolioContext } from '@/context/index';
 
 function AppBanner() {
-  const [activeTheme] = useThemeSwitcher();
+  const { activeTheme } = usePortfolioContext();
 
   return (
     <motion.section

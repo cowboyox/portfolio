@@ -7,14 +7,14 @@ import { useState } from 'react';
 import { FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
 
 import HireMeModal from '@/components/HireMeModal';
-import useThemeSwitcher from '@/hooks/useThemeSwitcher';
+import { usePortfolioContext } from '@/context/index';
 import logoDark from '@/public/images/logo-dark.png';
 import logoLight from '@/public/images/logo-light.png';
 
 function AppHeader() {
   const [showMenu, setShowMenu] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [activeTheme, setTheme] = useThemeSwitcher();
+  const { activeTheme, setTheme } = usePortfolioContext();
 
   function toggleMenu() {
     if (!showMenu) {
@@ -52,16 +52,16 @@ function AppHeader() {
                   src={logoDark}
                   className='cursor-pointer'
                   alt='Dark Logo'
-                  width={80}
-                  height={50}
+                  width={50}
+                  height={30}
                 />
               ) : (
                 <Image
                   src={logoLight}
                   className='cursor-pointer'
                   alt='Dark Logo'
-                  width={80}
-                  height={50}
+                  width={50}
+                  height={30}
                 />
               )}
             </Link>
