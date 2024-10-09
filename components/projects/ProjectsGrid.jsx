@@ -1,30 +1,30 @@
 'use client';
 
-import { useState } from 'react';
-import { FiSearch } from 'react-icons/fi';
+// import { useState } from 'react';
+// import { FiSearch } from 'react-icons/fi';
 
-import ProjectsFilter from '@/components/projects/ProjectsFilter';
+// import ProjectsFilter from '@/components/projects/ProjectsFilter';
 import ProjectSingle from '@/components/projects/ProjectSingle';
 import { projectsData } from '@/data/projectsData';
 
 function ProjectsGrid() {
-  const [searchProject, setSearchProject] = useState();
-  const [selectProject, setSelectProject] = useState();
+  // const [searchProject, setSearchProject] = useState();
+  // const [selectProject, setSelectProject] = useState();
 
-  const selectProjectsByCategory = projectsData.filter((item) => {
-    let category = item.category.charAt(0).toUpperCase() + item.category.slice(1);
-    return category.includes(selectProject);
-  });
+  // const selectProjectsByCategory = projectsData.filter((item) => {
+  //   let category = item.category.charAt(0).toUpperCase() + item.category.slice(1);
+  //   return category.includes(selectProject);
+  // });
 
   return (
     <section className='mt-5 py-5 sm:mt-10 sm:py-10'>
       <div className='text-center'>
         <p className='font-general-medium mb-1 text-2xl text-ternary-dark dark:text-ternary-light sm:text-4xl'>
-          Projects portfolio
+          My Projects
         </p>
       </div>
 
-      <div className='mt-10 sm:mt-16'>
+      {/* <div className='mt-10 sm:mt-16'>
         <h3 className='font-general-regular text-md mb-3 text-center text-secondary-dark dark:text-ternary-light sm:text-xl'>
           Search projects by title or filter by category
         </h3>
@@ -50,14 +50,18 @@ function ProjectsGrid() {
 
           <ProjectsFilter setSelectProject={setSelectProject} />
         </div>
-      </div>
+      </div> */}
 
       <div className='mt-6 grid grid-cols-1 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3'>
-        {selectProject
+        {/* {selectProject
           ? selectProjectsByCategory.map((project, index) => {
               return <ProjectSingle key={index} {...project} />;
             })
-          : projectsData.map((project, index) => <ProjectSingle key={index} {...project} />)}
+          :  */}
+        {projectsData.map((project, index) => (
+          <ProjectSingle key={index} {...project} />
+        ))}
+        {/* // } */}
       </div>
     </section>
   );

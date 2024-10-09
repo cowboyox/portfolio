@@ -16,7 +16,7 @@ function AppBanner() {
       transition={{ ease: 'easeInOut', duration: 0.9, delay: 0.2 }}
       className='mt-5 flex flex-col items-center sm:flex-row sm:justify-between md:mt-2'
     >
-      <div className='w-full text-left md:w-1/3'>
+      <div className='w-full text-left md:w-2/5'>
         <motion.h1
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -27,7 +27,7 @@ function AppBanner() {
           }}
           className='font-general-semibold text-center text-2xl text-ternary-dark dark:text-primary-light sm:text-left lg:text-3xl xl:text-4xl'
         >
-          Hi, I am Alex
+          Hi, I am Alex!
         </motion.h1>
         <motion.p
           initial={{ opacity: 0 }}
@@ -39,7 +39,19 @@ function AppBanner() {
           }}
           className='font-general-medium mt-4 text-center text-lg leading-normal text-gray-500 dark:text-gray-200 sm:text-left md:text-xl lg:text-2xl xl:text-3xl'
         >
-          An Experienced Blockchain & Web Engineer
+          An Experienced
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{
+            ease: 'easeInOut',
+            duration: 0.9,
+            delay: 0.2,
+          }}
+          className='font-general-medium text-center text-lg leading-normal text-gray-500 dark:text-gray-200 sm:text-left md:text-xl lg:text-2xl xl:text-3xl'
+        >
+          Blockchain & Web Engineer
         </motion.p>
         <motion.div
           initial={{ opacity: 0 }}
@@ -66,7 +78,7 @@ function AppBanner() {
         initial={{ opacity: 0, y: -180 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ ease: 'easeInOut', duration: 0.9, delay: 0.2 }}
-        className='float-right mt-8 w-full text-right sm:mt-0 sm:w-2/3'
+        className='float-right mt-8 w-full text-right sm:mt-0 sm:w-3/5'
       >
         <Image
           layout='responsive'

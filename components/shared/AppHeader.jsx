@@ -8,7 +8,8 @@ import { FiMenu, FiMoon, FiSun, FiX } from 'react-icons/fi';
 
 import HireMeModal from '@/components/HireMeModal';
 import useThemeSwitcher from '@/hooks/useThemeSwitcher';
-import logo from '@/public/images/logo.svg';
+import logoDark from '@/public/images/logo-dark.png';
+import logoLight from '@/public/images/logo-light.png';
 
 function AppHeader() {
   const [showMenu, setShowMenu] = useState(false);
@@ -46,7 +47,23 @@ function AppHeader() {
         <div className='flex items-center justify-between px-4 sm:px-0'>
           <div>
             <Link href='/'>
-              <Image src={logo} className='cursor-pointer' alt='Dark Logo' width={50} height={50} />
+              {activeTheme === 'dark' ? (
+                <Image
+                  src={logoDark}
+                  className='cursor-pointer'
+                  alt='Dark Logo'
+                  width={80}
+                  height={50}
+                />
+              ) : (
+                <Image
+                  src={logoLight}
+                  className='cursor-pointer'
+                  alt='Dark Logo'
+                  width={80}
+                  height={50}
+                />
+              )}
             </Link>
           </div>
 
@@ -105,7 +122,7 @@ function AppHeader() {
               Contact
             </Link>
           </div>
-          <div className='border-t-2 border-primary-light pt-3 dark:border-secondary-dark sm:border-t-0 sm:pt-0'>
+          {/* <div className='border-t-2 border-primary-light pt-3 dark:border-secondary-dark sm:border-t-0 sm:pt-0'>
             <button
               onClick={showHireMeModal}
               className='font-general-medium text-md mt-2 block w-24 rounded-sm bg-indigo-500 px-4 py-2 text-left text-white shadow-sm duration-300 hover:bg-indigo-600 sm:hidden'
@@ -113,7 +130,7 @@ function AppHeader() {
             >
               Hire Me
             </button>
-          </div>
+          </div> */}
         </div>
 
         {/* Header links large screen */}
@@ -141,7 +158,7 @@ function AppHeader() {
 
         {/* Header right section buttons */}
         <div className='hidden flex-col items-center justify-between sm:flex md:flex-row'>
-          <div className='hidden md:flex'>
+          {/* <div className='hidden md:flex'>
             <button
               onClick={showHireMeModal}
               className='text-md font-general-medium rounded-md bg-indigo-500 px-5 py-2.5 text-white shadow-sm duration-300 hover:bg-indigo-600'
@@ -149,7 +166,7 @@ function AppHeader() {
             >
               Hire Me
             </button>
-          </div>
+          </div> */}
 
           {/* Theme switcher large screen */}
           <div
@@ -167,7 +184,6 @@ function AppHeader() {
       </div>
       <div>
         {showModal ? <HireMeModal onClose={showHireMeModal} onRequest={showHireMeModal} /> : null}
-        {showModal ? showHireMeModal : null}
       </div>
     </motion.nav>
   );

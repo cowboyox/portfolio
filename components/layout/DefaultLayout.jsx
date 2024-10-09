@@ -1,6 +1,11 @@
+import dynamic from 'next/dynamic';
+
 import PagesMetaHead from '@/components/PagesMetaHead';
 import AppFooter from '@/components/shared/AppFooter';
-import AppHeader from '@/components/shared/AppHeader';
+
+const AppHeader = dynamic(() => import('@/components/shared/AppHeader'), {
+  ssr: false,
+});
 
 const DefaultLayout = ({ children }) => {
   return (

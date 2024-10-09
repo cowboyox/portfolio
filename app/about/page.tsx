@@ -2,8 +2,8 @@
 
 import { motion } from 'framer-motion';
 
-import AboutClients from '@/components/about/AboutClients';
-import AboutCounter from '@/components/about/AboutCounter';
+// import AboutClients from '@/components/about/AboutClients';
+// import AboutCounter from '@/components/about/AboutCounter';
 import AboutMeBio from '@/components/about/AboutMeBio';
 import PagesMetaHead from '@/components/PagesMetaHead';
 
@@ -22,18 +22,18 @@ function about() {
       </motion.div>
 
       {/** Counter without paddings */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+      {/* <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
         <AboutCounter />
-      </motion.div>
+      </motion.div> */}
 
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         className='container mx-auto'
       >
         <AboutClients />
-      </motion.div>
+      </motion.div> */}
     </div>
   );
 }
